@@ -39,3 +39,21 @@ WF68K10_FILE=wf68k10_address_registers.vhd \
 		wf68k10_exception_handler.vhd \
 		wf68k10_pkg.vhd
 
+WF68K30L_WORK=wf68k30L
+WF68K30L_FILES= wf68k30L/wf68k30L_address_registers.vhd \
+		wf68k30L/wf68k30L_bus_interface.vhd \
+		wf68k30L/wf68k30L_data_registers.vhd \
+		wf68k30L/wf68k30L_opcode_decoder.vhd  \
+		wf68k30L/wf68k30L_top.vhd \
+		wf68k30L/wf68k30L_alu.vhd \
+		wf68k30L/wf68k30L_control.vhd \
+		wf68k30L/wf68k30L_exception_handler.vhd \
+		wf68k30L/wf68k30L_pkg.vhd
+
+wf68k30L.v:
+	rm -rf $@.build
+	mkdir $@.build
+	ghdl -i $(GHDL_ARGS) --work=$(WF68K30L_WORK) --workdir=$@.build -Pbuild $(WF68K30L_FILES)
+	ghdl -m $(GHDL_ARGS) --work=$(WF68K30L_WORK) --workdir=$@.build WF68K30L_TOP
+	ghdl synth $(GHDL_ARGS) --work=$(WF68K30L_WORK) --workdir=$@.build -Pbuild \
+	--out=verilog WF68K30L_TOP > $@
