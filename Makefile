@@ -28,3 +28,14 @@ wf68k00.vvp: wf68k00_test.v wf68k00.v
 wf68k00_test: wf68k00.vvp
 	./wf68k00.vvp
 
+WF68K10_WORK=wf68k10
+WF68K10_FILE=wf68k10_address_registers.vhd \
+		wf68k10_bus_interface.vhd \
+		wf68k10_data_registers.vhd \
+		wf68k10_opcode_decoder.vhd \
+		wf68k10_top.vhd \
+		wf68k10_alu.vhd \
+		wf68k10_control.vhd \
+		wf68k10_exception_handler.vhd \
+		wf68k10_pkg.vhd
+
